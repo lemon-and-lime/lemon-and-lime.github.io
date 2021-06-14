@@ -1,6 +1,7 @@
 <script>
     import Highlight from "svelte-highlight";
     import python from "svelte-highlight/src/languages/python";
+    import bash from "svelte-highlight/src/languages/bash";
     import "svelte-highlight/src/styles/github-dark.css";
     
     const valueInference = `
@@ -17,9 +18,23 @@
     `;
 
     const recurringDecimal = `
-    (41 + 1) / 14
+    (41 + 3) / 14
 
     # = 22/7
+    `;
+
+    const mojitoIntall = `
+    $ mojito add calculus
+
+    Adding package 'calculus' to mojito.json
+
+    $ mojito
+
+    Installing 13 packages from mojito.json
+
+    [||||||||||||||||||||] 100%
+
+    Installation Complete
     `;
 </script>
 
@@ -32,6 +47,9 @@
         <Highlight language="{python}" code="{nonNumeric}" />
         <h3>Natural Reccuring Decimal Representation</h3>
         <Highlight language="{python}" code="{recurringDecimal}" />
+        <h3>Extendable</h3>
+        <p>With the Mojito Packge Manager, Lime can gain new functionality, including additional pre-defined constants and operators tailored for specific use cases.</p>
+        <Highlight language="{bash}" code="{mojitoIntall}" />
     </div>
 </div>
 

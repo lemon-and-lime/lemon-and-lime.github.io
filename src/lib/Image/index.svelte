@@ -20,8 +20,8 @@
         function parallax() {
             let scrolled = window.pageYOffset - (offset * window.innerHeight);
             let parallax = document.querySelector(`.image-${offset}`);
-            let coords = (scrolled * 0.4) + 'px'
-            parallax.style.transform = 'translateY(' + coords + ')';
+            let coords = (scrolled * 0.4)
+            parallax.style.transform = 'translateY(' + coords + 'px)';
         };
     });
 </script>
