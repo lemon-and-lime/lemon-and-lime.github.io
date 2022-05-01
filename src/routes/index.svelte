@@ -1,30 +1,46 @@
 <script context="module">
-    export const prerender = true;
+	export const prerender = true;
 </script>
 
 <script>
-    import Cover from '$lib/Cover/index.svelte';
-    import About from '$lib/About/index.svelte';
-    import Image from '$lib/Image/index.svelte';
-    import Features from '$lib/Features/index.svelte';
-    import Credits from '$lib/Credits/index.svelte';
-    import Footer from '$lib/Footer/index.svelte';
+	import katex from 'katex';
+	import evaluatex from "evaluatex/dist/evaluatex";
+
+	let expression = "1 + 3"
+	let rendered;
+	let answer;
+	
+	$: expression, rendered = katex.renderToString(expression, {
+		throwOnError: false,
+		displayMode: true,
+		output: "mathml"
+	});
+
+	$: rendered, answer = evaluatex(expression)();
 </script>
 
 <svelte:head>
-    <title>Lime</title>
+	<title>Home</title>
 </svelte:head>
 
-<Cover />
+<section class="h-screen bg-white p-4">
+	<div class="grid overflow-hidden grid-cols-12 auto-rows-auto gap-2 w-full h-full">
+		<div class="box col-span-8">
+			<input class="text-black" bind:value={expression} type="text">
+			<p>{@html rendered }</p>
+			<p>{answer}</p>
+		</div>
+	</div>
+</section>
 
-<About />
-
-<Image image="second.jpg" offset="2" />
-
-<Features />
-
-<Image image="third.jpg" offset="4" />
-
-<Credits />
-
-<Footer />
+<style>
+	.box {
+		@apply
+			bg-white
+			text-black
+			min-w-full
+			h-32
+			min-h-full
+			rounded-lg;
+	}
+</style>
