@@ -4,7 +4,7 @@
 
 <script>
 	import katex from 'katex';
-	import evaluatex from "evaluatex/dist/evaluatex";
+	import evaluatex from "evaluatex";
 
 	let expression = "1 + 3"
 	let rendered;
